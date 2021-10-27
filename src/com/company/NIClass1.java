@@ -6,7 +6,7 @@ public class NIClass1 {
     private final float primaryPercent = 0.12F;
     private final float upperPercent = 0.02F;
 
-    private float annualIncome;
+    private final float annualIncome;
     private float totalNILiability = 0;
 
     public NIClass1(float annualIncome) {

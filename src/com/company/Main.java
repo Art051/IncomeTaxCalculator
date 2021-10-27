@@ -9,8 +9,9 @@ public class Main {
                 NIClass1 nIClass1Calculator = new NIClass1(annualIncome);
                 TaxReport report = new TaxReport(payeCalc,nIClass1Calculator);
 
-                report.printPAYE();
+                report.printGrossPay();
                 report.printNIClass1();
+                report.printPAYE();
                 report.printTakeHomePay();
     }
 }

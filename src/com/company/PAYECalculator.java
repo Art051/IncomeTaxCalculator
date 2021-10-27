@@ -4,17 +4,15 @@ public class PAYECalculator {
     public float grossPay;
     public float payeLiability;
 
-    public final float defaultPersAllowance = 12_579;
+    private final float defaultPersAllowance = 12_579;
     public float adjustedPersAllowance;
-    private float basicRateBand = 50_270;
-    private float higherRateBand = 150_000;
+    private final float basicRateBand = 50_270;
+    private final float higherRateBand = 150_000;
     private final float basePercent = 0.2F;
     private final float higherPercent = 0.4F;
     private final float additionalPercent = 0.45F;
     private final float persAllowanceTaperStart = 100_000;
     private final float persAllowanceTaperEnd = persAllowanceTaperStart + (defaultPersAllowance * 2);
-    private float basicRateBandWidth = 37_700;
-    private float higherRateBandWidth = 112_300;
 
     public PAYECalculator(float grossPay) {
         this.grossPay = grossPay;
@@ -41,10 +39,12 @@ public class PAYECalculator {
             payeLiability = (grossPay - adjustedPersAllowance) * basePercent;
         else if (grossPay <= higherRateBand)
             payeLiability = ((basicRateBand - (adjustedPersAllowance + 9)) * basePercent) +
+                    ((defaultPersAllowance - adjustedPersAllowance) * basePercent) +
                     ((grossPay - basicRateBand) * higherPercent);
-        else payeLiability = (basicRateBandWidth * basePercent) +
-                    (higherRateBandWidth * higherPercent) +
-                    ((grossPay - higherRateBandWidth) * additionalPercent);
+        else payeLiability = ((basicRateBand - (adjustedPersAllowance + 9)) * basePercent) +
+                    ((defaultPersAllowance - adjustedPersAllowance) * basePercent) +
+                    ((higherRateBand - basicRateBand) * higherPercent) +
+                    (grossPay - higherRateBand) * additionalPercent;
         return payeLiability;
     }
 }

@@ -4,8 +4,8 @@ import java.text.NumberFormat;
 
 public class TaxReport {
 
-    private PAYECalculator payeCalculator;
-    private NIClass1 nIClass1Calculator;
+    private final PAYECalculator payeCalculator;
+    private final NIClass1 nIClass1Calculator;
 
 
     public TaxReport(PAYECalculator payeCalculator, NIClass1 nIClass1Calculator) {
@@ -13,8 +13,15 @@ public class TaxReport {
         this.nIClass1Calculator = nIClass1Calculator;
     }
 
+    public void printGrossPay() {
+        System.out.println("Your PAYE liability for the year is: ");
+        System.out.print(NumberFormat.getCurrencyInstance().format(payeCalculator.grossPay) + "\n");
+    }
+
     public void printPAYE() {
         float payeLiability = payeCalculator.calculatePAYE(payeCalculator.grossPay);
+        System.out.println("Your personal allowance is: \n" +
+                NumberFormat.getCurrencyInstance().format(payeCalculator.adjustedPersAllowance));
         System.out.println("Your PAYE liability for the year is: ");
         System.out.print(NumberFormat.getCurrencyInstance().format(payeLiability) + "\n");
     }
@@ -32,8 +39,5 @@ public class TaxReport {
         System.out.println("Your take home pay for the year is: ");
         System.out.print(NumberFormat.getCurrencyInstance().format(
                 annualIncome - payeLiability - nIClass1Liability) + "\n");
-        System.out.println("Your personal allowance is: \n" +
-                NumberFormat.getCurrencyInstance().format(payeCalculator.adjustedPersAllowance));
-
     }
 }

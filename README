@@ -1,5 +1,5 @@
-This is a tax calculator which takes income (without any reductions/amendments/allowances) and calculates PAYE
-as well as Class 1 National Insurance HMRC state Personal Allowance is 12,570  -  https://www.gov.uk/income-tax-rates
+This is a tax calculator which takes income (without any reductions/amendments/allowances e.g. pension contributions) and calculates PAYE as well as Class 1 National Insurance.
+HMRC state Personal Allowance is 12,570  -  https://www.gov.uk/income-tax-rates
 If you use their calculator, it says the Personal Allowance is 12,579  -  https://www.gov.uk/estimate-income-tax
 
 For this program I'll be using £12,579.
@@ -7,15 +7,10 @@ For this program I'll be using £12,579.
 Below is the list of Tax bands and rates for 2020/21:
 Band            	    Taxable income  	    Tax rate
 Personal Allowance  	Up to £12,570 	        0%
-Basic rate 	            £12,571 to £50,270 	    20%
-Higher rate 	        £50,271 to £150,000 	40%
+Basic rate 	          £12,571 to £50,270 	    20%
+Higher rate 	        £50,271 to £150,000 	  40%
 Additional rate 	    over £150,000 	        45%
 
 There is a reduction in Personal Allowance when an individual's taxable income exceeds £100,000.
 For every £2 earned above £100,000 - the Personal Allowance reduces by £1, therefore paying 20% extra on the personal allowance adjustment.
 Personal Allowance can be reduced to £0 - the reduction cannot result in a negative value.
-The Tax Bandwidths are still applied beginning from the new Personal Allowance:
-
-Band            	    Tax Bandwidth
-Basic Rate  	        £37,700
-Higher Rate             £112,300
